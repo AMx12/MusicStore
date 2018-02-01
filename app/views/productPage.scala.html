@@ -1,0 +1,22 @@
+@(guitar: String, guitars: List[storeItem])
+
+@main {
+
+@for(guitars<-guitars){
+    @if(guitars.nameShort==guitar){
+    <div class="container">
+        <div class="row" style="padding-top: 6%; padding-bottom: 10%">
+            <div class="col-sm-4"><img src=@routes.Assets.at(s"images/guitars/${guitars.image}") alt=@{guitars.nameShort} style="width:400px;"></div>
+            <div class="col-sm-8"  align="center">
+                <h1>@guitars.make<h2>@guitars.model<h4>@guitars.info</h4></h2></h1>
+                <div><h2>£@guitars.price</h2>
+                <a align="center" class="btn btn-success" style="width:20%; margin: auto;" href="@routes.Application.productPage(s"${guitars.nameShort}")">ADD TO CART</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    }
+}
+}
