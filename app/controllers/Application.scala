@@ -18,12 +18,15 @@ class Application extends Controller {
     storeItem("guitar", "G1007", "Ibanez", "RGDIX7MPB", "IRGD", "ibanezRGD.jpg", "The Ibanez RGDIX7MPB model hails from the well-renowned RGD series of guitars, however it has an entirely new and unique build unlike its close relatives in the range. Still instantly recognisable thanks to its deep bevelled body and extra horn cut accompanied by a longer 26.5 inch scale neck, the RGDIX7MPB is a 7-string monster in a dazzling Surreal Blue Burst finish.", 799),
     storeItem("guitar", "G1008", "Jackson", "MT-SL2 Soloist", "JMT", "jacksonMTSig.jpg", "Slipknot lead guitarist Mick Thomson is one of metal’s most successful and revered players. His game changing, take-no-prisoners approach to metal guitar has influenced countless musicians worldwide, while his black hole-heavy de-tuned guitar sound has been an integral part of Slipknot for more than two decades. Capable of handling his acclaimed aggressive technique and tone, the USA Signature Mick Thomson Soloist™ is a sinister axe loaded with premium features including genuine mahogany body wings coupled with a graphite reinforced through-body three-piece maple neck—carved to a custom super-thin profile for maximum comfort and highspeed playability, and a 12”-16” compound radius ebony fingerboard with 24 frets. This signature Soloist is powered by a pair of Mick Thomson signature Seymour Duncan® Blackouts to complement the complex, crushing riffs Thomson plays in dropped tunings.", 3263),
     storeItem("guitar", "G1009", "Schecter", "C-7 SLS Elite", "SC7E", "schecterC7.jpg", "The C series is Schecter's flagship range, and the new for 2018 SLS Elite model has a number of premium features and refinements to suit the most serious of shredders. With a pair of active Fishman Fluence pickups, a Hipshot hardtail bridge and a gorgeous Antique Fade Burst finish, this guitar truly belongs in the 21st Century with its modern features and classy aesthetics.", 1329),
-    storeItem("guitar", "G1010", ".strandberg*", "Plini Boden OS 6", "sPB6", "strandbergPSig.jpg", "We are very excited to announce the availability of a limited run of Boden OS 6 guitars made especially for Paul Masvidal of Cynic, and Plini! They feature a solid Hawaiian Koa top, Swamp Ash body, Birdseye Maple patented EndurNeck™ with Carbon Fiber reinforcements and Walnut laminates, Ebony Fingerboard with glow in the dark side markers and inlays, and 24 Jumbo Stainless Steel frets in a 25.5″ – 25″ fan. The pickups are Seymour Duncan Jazz/JB, and the guitars are delivered in the more exclusive padded gig case used in the Custom Shop. The Paul Masvidal model features the world debut of the new fanned fret tremolo, and a signature “Masvidalien” inlay on the 12th fret. The Plini model features a fixed bridge and the Plini crescent moon inlay.", 1549),
-    storeItem("amp", "A1001", "Victory x Orange", "SuperKraken x JR#4 212", "vxo", "andySpecial.jpg", ".", 1899)
+    storeItem("guitar", "G1010", ".strandberg*", "Plini Boden OS 6", "sPB6", "strandbergPSig.jpg", "We are very excited to announce the availability of a limited run of Boden OS 6 guitars made especially for Paul Masvidal of Cynic, and Plini! They feature a solid Hawaiian Koa top, Swamp Ash body, Birdseye Maple patented EndurNeck™ with Carbon Fiber reinforcements and Walnut laminates, Ebony Fingerboard with glow in the dark side markers and inlays, and 24 Jumbo Stainless Steel frets in a 25.5″ – 25″ fan. The pickups are Seymour Duncan Jazz/JB, and the guitars are delivered in the more exclusive padded gig case used in the Custom Shop. The Paul Masvidal model features the world debut of the new fanned fret tremolo, and a signature “Masvidalien” inlay on the 12th fret. The Plini model features a fixed bridge and the Plini crescent moon inlay.", 2499),
+    storeItem("amp", "A1001", "Victory x Orange", "SuperKraken x JR#4 212", "vxo", "andySpecial.jpg", ".", 1750),
+    storeItem("amp", "A1002", "Hughes & Kettner", "GrandMeister x TC 412 A60", "hkc", "h&kCombo.jpg", ".", 1850),
+    storeItem("amp", "A1003", "Orange x Jim Root", "JR#4 Terror x JR#4 212", "hkc", "jimRootCombo.jpg", ".", 900)
+
 
   )
 
-  var cart = ListBuffer[String]()
+  var cart = List[String]()
 
 
   def index = Action {
@@ -44,7 +47,12 @@ class Application extends Controller {
   }
 
   def basket(productID: String) = Action {
-    Ok(views.html.productPage(productID, cart, guitars))
+    cart ::= productID
+    Ok(views.html.basket(productID, cart, guitars))
   }
+
+//  def cartAddition(productID: String) = Action {
+//    Ok(cart ::= productID)
+//  }
 
 }

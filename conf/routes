@@ -7,6 +7,7 @@ GET     /                                       controllers.Application.index
 GET     /guitar                                 controllers.Application.guitarsPage
 GET     /amp                                    controllers.Application.ampsPage
 GET     /basket                                 controllers.Application.basket(productID: String)
+#GET     /cartBoy                             controllers.Application.cartAddition(productID: String)
 GET     /:productType/:productID/:productName   controllers.Application.productPage(productType: String, productID: String, productName: String)
 
 # Map static resources from the /public folder to the /assets URL path
